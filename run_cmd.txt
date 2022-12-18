@@ -1,0 +1,27 @@
+### prepare_netvlads.py
+python prepare_netvlads.py --data_path /media/yoli/WDC-2.0-TB-Hard-/CambridgeLandmarks/ --labels_file datasets/CambridgeLandmarks/abs_cambridge_pose_sorted.csv_ShopFacade_test.csv
+
+### compute_knns.py
+python compute_knns.py --data_path /media/yoli/WDC-2.0-TB-Hard-/CambridgeLandmarks/netvlads/
+--db_labels_file datasets/CambridgeLandmarks/cambridge_four_scenes.csv_with_netvlads.csv
+--query_labels_file datasets/CambridgeLandmarks/abs_cambridge_pose_sorted.csv_ShopFacade_test.csv_with_netvlads.csv
+
+### main_nsrpr.py
+train
+/media/yoli/WDC-2.0-TB-Hard-/CambridgeLandmarks/
+datasets/CambridgeLandmarks/cambridge_four_scenes.csv_with_netvlads.csv
+datasets/CambridgeLandmarks/cambridge_four_scenes.csv_with_netvlads.csv
+datasets/CambridgeLandmarks/cambridge_four_scenes.csv_with_netvlads.csv-knn-cambridge_four_scenes.csv_with_netvlads.csv
+cambridge_config.json
+
+
+# overfit
+test
+/media/yoli/WDC-2.0-TB-Hard-/CambridgeLandmarks/
+datasets/CambridgeLandmarks/cambridge_four_scenes.csv_with_netvlads.csv
+datasets/CambridgeLandmarks/cambridge_four_scenes.csv_with_netvlads.csv
+datasets/CambridgeLandmarks/cambridge_four_scenes.csv_with_netvlads.csv-knn-cambridge_four_scenes.csv_with_netvlads.csv
+cambridge_config.json
+--checkpoint_path out/run_07_11_22_21_10_nsrpr_final.pth
+
+test /media/yoli/WDC-2.0-TB-Hard-/CambridgeLandmarks/ datasets/CambridgeLandmarks/abs_cambridge_pose_sorted.csv_ShopFacade_test.csv_with_netvlads.csv datasets/CambridgeLandmarks/cambridge_four_scenes.csv_with_netvlads.csv datasets/CambridgeLandmarks/abs_cambridge_pose_sorted.csv_ShopFacade_test.csv_with_netvlads.csv-knn-cambridge_four_scenes.csv_with_netvlads.csv cambridge_config.json --checkpoint_path out/run_07_11_22_21_10_nsrpr_final.pth
